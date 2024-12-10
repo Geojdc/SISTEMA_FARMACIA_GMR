@@ -1,0 +1,68 @@
+body
+{
+padding-top: 0px; /* Ajusta este valor según la altura de tu navbar */ 
+background-image: url('../imagenes/fondo_login.jpg'); /* Ruta a la imagen de fondo */ 
+background-size: cover; /* Ajusta la imagen para que cubra toda la pantalla */ 
+background-repeat: no-repeat; /* Evita que la imagen se repita */ 
+background-position: center; /* Centra la imagen */
+height:750px;
+color:#ffffff;
+}
+/* body .h2{
+    color:#ffffff;
+} */
+/* Estilo para centrar y redondear la imagen del avatar */ 
+.img-fluid {
+    border: 2px solid #ffffff;
+    padding: 5px; 
+    background-color: #ffffff;
+    border-radius: 5%;
+ }
+ .volver 
+ { float: right; margin-right: 20px; /* Ajusta el margen según sea necesario */ }
+ .container-form {
+    max-width: 900px;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-header img {
+    width: 150px;
+    height: 100px;
+}
+
+.form-header h5 {
+    margin-top: 15px;
+}
+.table-custom {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #5a96d2;
+}
+
+.table-custom thead {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.table-custom th,
+.table-custom td {
+    padding: 12px 15px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.table-custom .btn {
+    margin: 0 5px;
+}

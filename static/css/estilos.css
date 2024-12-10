@@ -1,0 +1,59 @@
+/* Navbar Custom Styles */
+.navbar-custom {
+    background-color: rgba(145, 80, 189, 0.4); /* Añadimos transparencia */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-custom .navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar-custom .nav-link {
+    color: #fff;
+    margin-left: 70px;
+    transition: color 0.3s; 
+    background-color: rgb(117, 74, 174);
+    border-radius: 10px;
+}
+
+.navbar-custom .nav-link:hover {
+    color: #edecf2;
+    text-decoration: underline;
+}
+
+
+/* Body Background */
+body {
+    background-image: url('/static/imagenes/producto6.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Main content */
+.main-content {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Images */
+.floating-images {
+    position: relative;
+    text-align: center;
+    margin-top: 130px;
+}
+
+.floating-images img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    transition: transform 0.3s;
+    border-radius: 12px;
+}
+
+.floating-images img:hover {
+    transform: scale(1.1);
+}
