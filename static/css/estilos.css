@@ -1,33 +1,59 @@
-body
-{
-padding-top: 0px; /* Ajusta este valor según la altura de tu navbar */ 
-background-image: url('../imagenes/farmacia2.jpg'); /* Ruta a la imagen de fondo */ 
-background-size: cover; /* Ajusta la imagen para que cubra toda la pantalla */ 
-background-repeat: no-repeat; /* Evita que la imagen se repita */ 
-background-position: center; /* Centra la imagen */
-height:750px;
-}
-/* Estilo personalizado para la barra de navegación */
+/* Navbar Custom Styles */
 .navbar-custom {
-    background-color: #50b288; /* Color celeste */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle un toque moderno */
+    background-color: rgba(145, 80, 189, 0.4); /* Añadimos transparencia */
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-custom .navbar-brand {
+    color: #fff;
+    font-size: 24px;
     font-weight: bold;
 }
 
 .navbar-custom .nav-link {
-    color: #fff !important; /* Asegura que los enlaces sean blancos */
-    margin-right: 15px; /* Espaciado entre enlaces */
+    color: #fff;
+    margin-left: 70px;
+    transition: color 0.3s; 
+    background-color: rgb(117, 74, 174);
+    border-radius: 10px;
 }
 
 .navbar-custom .nav-link:hover {
-    color: #f8f9fa !important; /* Color al pasar el mouse sobre los enlaces */
-}
-
-.form-control {
-    margin-right: 10px; /* Espacio entre el campo de búsqueda y el botón */
+    color: #edecf2;
+    text-decoration: underline;
 }
 
 
+/* Body Background */
+body {
+    background-image: url('/static/imagenes/producto6.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Main content */
+.main-content {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+/* Images */
+.floating-images {
+    position: relative;
+    text-align: center;
+    margin-top: 130px;
+}
+
+.floating-images img {
+    width: 400px;
+    height: 400px;
+    margin: 20px;
+    transition: transform 0.3s;
+    border-radius: 12px;
+}
+
+.floating-images img:hover {
+    transform: scale(1.1);
+}

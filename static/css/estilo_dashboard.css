@@ -1,94 +1,75 @@
-/* body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-} */
-body
-{
-padding-top: 0px; /* Ajusta este valor según la altura de tu navbar */ 
-background-image: url('../imagenes/farmacia2.jpg'); /* Ruta a la imagen de fondo */ 
-background-size: cover; /* Ajusta la imagen para que cubra toda la pantalla */ 
-background-repeat: no-repeat; /* Evita que la imagen se repita */ 
-background-position: center; /* Centra la imagen */
-height:750px;
-}
-
-/* .sidebar {
-    width: 250px;
-    background-color: #161617;
-    color: #fff;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 20px;
-}
-
-.sidebar a {
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #fff;
-    display: block;
-}
-
-.sidebar a:hover {
-    background-color: #6884d0;
-}
-
-.content {
-    margin-left: 250px;
-    padding: 20px;
-}
-
-.navbar-custom {
-    background-color: #333;
-    color: #fff;
-}
- */
- body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
-}
-
+/* Sidebar */
 .sidebar {
-    width: 250px;
-    background-color: rgba(147, 130, 190, 0.4); /* Color con transparencia */
-    color: #fff;
     height: 100vh;
+    width: 250px;
     position: fixed;
     top: 0;
     left: 0;
+    background-color: rgba(145, 80, 189, 0.4);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding-top: 20px;
-}
-
-.sidebar a {
-    padding: 10px 20px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #1f1d1d;
-    display: block;
-}
-
-.sidebar a:hover {
-    background-color: rgba(95, 76, 203, 0.5); /* Color de hover con transparencia */
-}
-
-.content {
-    margin-left: 250px;
-    padding: 20px;
-}
-
-.navbar-custom {
-    background-color: #333;
     color: #fff;
 }
 
-/* Padding-left adicional para los enlaces dentro de los menús colapsados */
-.pl-4 {
-    padding-left: 30px;
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #f8f9fa;
+    display: block;
+    transition: background 0.3s;
 }
 
-/* Alineación de los iconos con el texto */
-.sidebar a .fas {
-    margin-right: 10px;
+.sidebar a:hover {
+    background-color: #8e71d1;
+}
+
+.sidebar .navbar-brand {
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/* Image in Sidebar */
+.sidebar img {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+/* Main content */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Floating Images */
+.floating-images {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.floating-images img {
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+    transition: transform 0.5s;
+    border-radius: 10px;
+}
+
+.floating-images img:hover {
+    transform: scale(1.1);
+}
+
+/* Body Background */
+body {
+    background-image: url('/static/imagenes/farmacia2.jpg');
+    background-size: cover;
+    background-attachment: fixed;
 }
