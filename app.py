@@ -473,7 +473,7 @@ def generar_reporte_ventas():
     pdf.drawString(310, y_position, "Precio")
     pdf.drawString(380, y_position, "Cantidad")
     pdf.drawString(470, y_position, "Cliente")
-    pdf.drawString(540, y_position, "Total")
+    pdf.drawString(600, y_position, "Total")
    
     y_position -= 20
    
@@ -490,7 +490,7 @@ def generar_reporte_ventas():
         pdf.drawString(320, y_position, str(venta['precio']))
         pdf.drawString(398, y_position, str(venta['cantidad']))
         pdf.drawString(450, y_position, venta['nombre_completo_cliente'])
-        pdf.drawString(550, y_position, str(venta['precio'] * venta['cantidad']))
+        pdf.drawString(610, y_position, str(venta['precio'] * venta['cantidad']))
         y_position -= 20
 
     # Añadir el total en la parte inferior
@@ -500,8 +500,8 @@ def generar_reporte_ventas():
         y_position = 500
     pdf.drawString(30, y_position, "------------------------------------------------------------------------------------------------------------------------------------------------")
     y_position -= 20
-    pdf.drawString(400, y_position, "Total: ")
-    pdf.drawString(500, y_position, str(suma_total))
+    pdf.drawString(500, y_position, "Total: ")
+    pdf.drawString(610, y_position, str(suma_total))
 
     pdf.save()
     buffer.seek(0)
@@ -898,7 +898,7 @@ def generar_reporte_compras():
 
     # Añadir encabezados de columna
     pdf.drawString(30, y_position, "ID")
-    pdf.drawString(60, y_position, "Categoría")
+    pdf.drawString(50, y_position, "Categoría")
     pdf.drawString(170, y_position, "Producto")
     pdf.drawString(255, y_position, "Stock")
     pdf.drawString(305, y_position, "P. Unitario")
@@ -918,7 +918,7 @@ def generar_reporte_compras():
             y_position = 500
             
         pdf.drawString(30, y_position, str(compra['cod_com']))
-        pdf.drawString(60, y_position, compra['nombre_cate'])
+        pdf.drawString(50, y_position, compra['nombre_cate'])
         pdf.drawString(170, y_position, compra['nombre_pro'])
         pdf.drawString(255, y_position, str(compra['stock']))
         pdf.drawString(305, y_position, str(compra['precio_unitario']))

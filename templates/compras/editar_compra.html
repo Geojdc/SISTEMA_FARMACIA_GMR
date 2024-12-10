@@ -46,11 +46,9 @@
                     </div>
                     <div class="col-md-6">
                         <label for="precio_unitario" class="form-label">Precio Unitario:</label>
-                        {% for producto in productos %}
-                        <input type="number" class="form-control" id="precio_unitario" name="precio_unitario" value="{{ producto.precio_unitario }}" required readonly>
-                        {% endfor %}
-                        
+                        <input type="number" class="form-control" id="precio_unitario" name="precio_unitario" value="{% for producto in productos %}{% if producto.id_pro == compra.id_pro %}{{ producto.precio_unitario }}{% endif %}{% endfor %}" required readonly>
                     </div>
+                    
                 </div>
                 
                 <div class="row mb-3">

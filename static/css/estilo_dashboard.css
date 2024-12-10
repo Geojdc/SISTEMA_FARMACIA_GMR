@@ -73,3 +73,71 @@ body {
     background-size: cover;
     background-attachment: fixed;
 }
+
+
+/*estilo extra NAVAR*/
+
+/* Estilo general de los enlaces */
+a[data-bs-toggle="collapse"] {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #343a40;
+    /* Gris oscuro */
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilo de los íconos */
+a[data-bs-toggle="collapse"] i {
+    font-size: 18px;
+    margin-right: 10px;
+    /* Espaciado entre ícono y texto */
+    color: #6c757d;
+    /* Color gris medio */
+}
+
+/* Efecto hover */
+a[data-bs-toggle="collapse"]:hover {
+    background-color: #f8f9fa;
+    /* Fondo claro */
+    color: #495057;
+    /* Color de texto más oscuro */
+}
+
+a[data-bs-toggle="collapse"]:hover i {
+    color: #0d6efd;
+    /* Cambia el color del ícono a azul */
+}
+
+/* Para ítems activos */
+a[data-bs-toggle="collapse"][aria-expanded="true"] {
+    background-color: #e9ecef;
+    /* Fondo gris claro */
+    color: #266dd6;
+    /* Azul para el texto */
+}
+
+a[data-bs-toggle="collapse"][aria-expanded="true"] i {
+    color: #0d6efd;
+    /* Azul para el ícono */
+}
+
+
+/* Submenu items con puntos */
+.submenu-item {
+    padding-left: 30px;
+    /* Indentación */
+    font-size: 16px;
+    color: #d0e8f7;
+    display: block;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.submenu-item:hover {
+    color: #d2dff8;
+    /* Cambia de color al pasar el cursor */
+}
