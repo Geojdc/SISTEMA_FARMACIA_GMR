@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <title>Editar Compra</title>
+=======
+    <title>editar_compra</title>
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos_registro_usuario.css') }}">
   </head>
   <body>
+<<<<<<< HEAD
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow container-form">
             <div class="form-header text-center mb-4">
@@ -105,8 +110,98 @@
             </form>
         </div>
     </div>
+=======
+
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow" style="width:100% ; max-width:400px;">
+            <div class="text-center mb-4">
+                <img src="/static/imagenes/ventas.png" alt="cliente" class="img-fluid rounded-circle" style="width: 150px; height: 100px;">
+                <h5 class="mt-3">EDITAR DE COMPRA</h5> 
+                <!-- {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} <div class="alert alert-{{ category }}">{{ message }}</div> {% endfor %} {% endif %} {% endwith %} -->
+            </div> 
+             <form action="{{url_for('actualizar_compra')}}" method="POST">
+                <div class="mb-3">
+                    <input type="hidden" name="cod_com" value="{{compra['cod_com']}}">
+                    <label for="cod_cate" class="form-label">Categoria:</label>
+                    <select id="cod_cate" class="form-select" required onchange="filtrarProductosYProveedores()">
+                        <option value="">Seleccionar</option>
+                        {% for categoria in categorias %}
+                        <option value="{{ categoria.cod_cate }}"{% if categoria.cod_cate == compra.cod_cate %}selected{%endif%} data-proveedor="{{ categoria.cod_prov }}">{{ categoria.nombre_cate }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+               
+                <div class="mb-3">
+                    <label for="id_pro" class="form-label">Producto:</label>
+                    <select id="id_pro" class="form-select" name="id_pro" required onchange="mostrarPrecio1()">
+                        <option value="">Seleccionar</option>
+                        {% for producto in productos %}
+                        <option value="{{ producto.id_pro }}"{% if producto.id_pro == compra.id_pro %}selected{%endif%} data-categoria="{{ producto.cod_cate }}" data-precio="{{ producto.precio_unitario }}">{{ producto.nombre_pro }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Stock:</label>
+                    <input type="number" class="form-control" id="stock" name="stock" min="0" value="{{ compra.stock }}" required readonly>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="precio_unitario" class="form-label">Precio Unitario:</label>
+                    <input type="number" class="form-control" id="precio_unitario" name="precio_unitario" value="{{ producto.precio_unitario }}" required readonly>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="cantidad_unidad" class="form-label">Cantidad Unidad:</label>
+                    <input type="number" class="form-control" id="cantidad_unidad" name="cantidad_unidad" min="0" value="{{ compra.cantidad_unidad }}"required oninput="calcularStockYTotal()">
+                </div>
+                <div class="mb-3">
+                    <label for="cantidad_caja" class="form-label">Cantidad Caja:</label>
+                    <input type="number" class="form-control" id="cantidad_caja" name="cantidad_caja" min="0"  value="{{ compra.cantidad_caja }}"required oninput="calcularStockYTotal()">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="precio_caja" class="form-label">Precio Caja:</label>
+                    <input type="number" class="form-control" id="precio_caja" name="precio_caja" min="0" step="0.01"   value="{{ compra.precio_caja }}"required oninput="calcularStockYTotal()">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="fecha_compra" class="form-label">Fecha de Compra:</label>
+                    <input type="datetime-local" class="form-control" name="fecha_compra"  value="{{ compra.fecha_compra}}"required>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="cod_prov" class="form-label">Proveedor:</label> 
+                    <select id="cod_prov" class="form-select" name="cod_prov" required> 
+                        <option value="">Seleccionar</option>
+                        {% for proveedor in proveedores %}
+                        <option value="{{ proveedor.cod_prov }}"{% if proveedor.cod_prov == compra.cod_prov %}selected{%endif%}>{{ proveedor.nombre_prov }}</option>
+                        {% endfor %}
+                    </select> 
+                </div>
+    
+                <div class="mb-3">
+                    <label for="precio_total" class="form-label">Precio Total:</label>
+                    <input type="number" class="form-control" id="precio_total" name="precio_total" value="{{ precio_total }}"required readonly>
+                </div>
+                <button class="btn btn-success w-100">Actualizar Compra</button>
+                <a href="/compras" class="btn btn-secondary w-100 mt-2 mb-2">Cancelar</a>
+            </form>
+        </div>
+        
+    </div>
+   
+
+
+
+    
+
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50

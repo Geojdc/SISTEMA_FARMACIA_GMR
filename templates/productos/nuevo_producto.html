@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <title>Registro de Productos</title>
+=======
+    <title>registro_producto</title>
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos_registro_usuario.css') }}">
   </head>
   <body>
+<<<<<<< HEAD
     <a href="/categorias" class="btn btn-primary m-3">Categorías</a>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow container-form">
@@ -83,3 +88,73 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+=======
+    <a href="/categorias" class="btn btn-primary volver">Categorias</a>
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow" style="width:100% ; max-width:400px;">
+            <div class="text-center mb-4">
+                <img src="/static/imagenes/ventas.png" alt="cliente" class="img-fluid rounded-circle" style="width: 150px; height: 100px;">
+                <h5 class="mt-3">REGISTRO DE PRODUCTOS</h5> 
+            </div>
+           
+                
+            <form action="/productos/nuevo" method="POST">
+                <div class="mb-3">
+                    <label for="cod_pro" class="form-label">Código del Producto:</label>
+                    <input type="text"class="form-control"name="cod_pro"required>
+                </div>
+                <div class="mb-3">
+                    <label for="nombre_pro" class="form-label">Nombre del Producto:</label>
+                    <input type="text"class="form-control"name="nombre_pro"required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio_unitario" class="form-label">Precio Unitario:</label>
+                    <input type="number" class="form-control" id="precio_unitario" name="precio_unitario" min="0" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio_de_venta" class="form-label">Precio de Venta:</label>
+                    <input type="number" class="form-control" id="precio_de_venta" name="precio_de_venta"  min="0" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="fecha_caducidad" class="form-label">Fecha de Caducidad:</label>
+                    <input type="date"class="form-control"name="fecha_caducidad"required>
+                </div>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number"class="form-control"name="cantidad" min="0" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <input type="text"class="form-control"name="descripcion"required>
+                </div>
+
+                <div class="mb-3"> <label for="cod_cate" class="form-label">Categoría:</label> 
+                    <select id="cod_cate" class="form-select" name="cod_cate" required> 
+                        <option value="">Seleccionar</option>
+                        {% for categoria in categorias %} 
+                        <!-- <option value="{{ categoria.cod_cate }}">{{ categoria.cod_cate }} - {{ categoria.nombre_cate }}</option>  -->
+                        <option value="{{ categoria.cod_cate }}">{{ categoria.nombre_cate }}</option> 
+                        {% endfor %} 
+                    </select> 
+                </div>
+                <button class="btn btn-success w-100">Registar Producto</button>
+                <!-- <a href="/productos" class="btn btn-secondary w-100  mt-2 mb-2">guardar</a> -->
+                <a href="/productos" class="btn btn-secondary w-100  mt-2 mb-2">Cancelar</a>
+            </form>
+        </div>
+        
+    </div>
+   
+
+
+
+    
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50

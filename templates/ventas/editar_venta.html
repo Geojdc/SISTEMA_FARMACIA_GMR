@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <title>Editar Venta</title>
+=======
+    <title>editar_venta</title>
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos_registro_usuario.css') }}">
   </head>
   <body>
+<<<<<<< HEAD
     <a href="/ventas" class="btn btn-secondary m-3">Ventas</a>
     <div class="container d-flex justify-content-center align-items-center vh-100">
         <div class="card p-4 shadow container-form">
@@ -83,8 +88,80 @@
             </form>
         </div>
     </div>
+=======
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card p-4 shadow" style="width:100% ; max-width:400px;">
+            <div class="text-center mb-4">
+                <h5 class="mt-3">EDITAR VENTA</h5> 
+            </div>
+            <!-- <h5 class="text-center mb-4">REGISTRO DE USUARIOS</h5> -->
+            <form action="{{url_for('actualizar_venta')}}" method="POST">
+                <input type="hidden" name="cod_ven" value="{{venta['cod_ven']}}">
+                <div class="mb-3">
+                    <label for="fecha_ven" class="form-label">Fecha de Venta:</label>
+                    <input type="datetime-local"class="form-control"name="fecha_ven"value="{{venta['fecha_ven']}}">
+                </div>
+                <div class="mb-3">
+                    <label for="cod_cate" class="form-label">Categoria:</label>
+                    <select id="cod_cate" class="form-select" required onchange="filtrarProductos()">
+                        <option value="">Seleccionar</option>
+                        {% for categoria in categorias %}
+                        <option value="{{ categoria.cod_cate }}"{% if categoria.cod_cate == venta.cod_cate %}selected{%endif%}>{{ categoria.nombre_cate }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="id_pro" class="form-label">Producto:</label>
+                    <select id="id_pro" class="form-select" name="id_pro" required onchange="mostrarPrecio()">
+                        <option value="">Seleccionar</option>
+                        {% for producto in productos %}
+                        <option value="{{ producto.id_pro }}"{% if producto.id_pro == venta.id_pro %}selected{%endif%} data-categoria="{{ producto.cod_cate }}" data-precio="{{ producto.precio_de_venta }}">{{ producto.nombre_pro }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio:</label>
+                    <input type="number" class="form-control" id="precio" name="precio" value="{{ venta.precio }}" required readonly>
+                </div>
+    
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label">Cantidad:</label>
+                    <input type="number" class="form-control" id="cantidad" name="cantidad" value="{{ venta.cantidad }}" required oninput="calcularPrecioTotal()">
+                </div>
+
+                <div class="mb-3">
+                    <label for="cod_cli" class="form-label">Cliente:</label> 
+                    <select id="cod_cli" class="form-select" name="cod_cli" required> 
+                        <option value="">Seleccionar</option>
+                        {% for cliente in clientes %} 
+                        <option value="{{ cliente.cod_cli }}"{% if cliente.cod_cli == venta.cod_cli %}selected{%endif%}>{{ cliente.nombre }} {{ cliente.apellido }} </option> 
+                        {% endfor %} 
+                    </select> 
+                </div>
+                <div class="mb-3">
+                    <label for="precio_total" class="form-label">Precio Total:</label>
+                    <input type="number" class="form-control" id="precio_total" name="precio_total" value="{{ venta.precio * venta.cantidad }}" required readonly>
+                </div>
+                <button class="btn btn-success w-100">Actualizar Venta</button>
+                <a href="/ventas" class="btn btn-secondary w-100  mt-2 mb-2">Cancelar</a>
+            </form>
+        </div>
+        
+    </div>
+   
+
+
+
+
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
 </html>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1b4a442fd467423c34067648acf64a503ba47c50
