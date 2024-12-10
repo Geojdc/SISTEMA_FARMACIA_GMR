@@ -433,6 +433,82 @@ def eliminar_venta (cod_ven):
     conn.close()
     return redirect('/ventas')
 
+@app.route('/ventas/pdf')
+def generar_reporte_ventas():
+    conn = sqlite3.connect("sistema_farmacia.db")
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+    
+    cursor.execute("""
+        SELECT venta.cod_ven, venta.fecha_ven, producto.nombre_pro, venta.precio, venta.cantidad, cliente.nombre || ' ' || cliente.apellido AS nombre_completo_cliente
+        FROM venta
+        JOIN cliente ON venta.cod_cli = cliente.cod_cli
+        JOIN producto ON venta.id_pro = producto.id_pro
+        GROUP BY venta.cod_ven
+    """)
+    
+    ventas = cursor.fetchall()
+
+    cursor.execute("SELECT SUM(venta.precio * venta.cantidad) AS suma_total FROM venta")
+    suma_total = cursor.fetchone()[0] or 0
+
+    conn.close()
+
+    buffer = io.BytesIO()
+    pdf = canvas.Canvas(buffer, pagesize=landscape(letter))
+    pdf.setTitle("Reporte de Ventas")
+    pdf.setFont("Helvetica", 12)
+
+    pdf.drawString(30, 565, "FARMACIA EL BUEN DOCTOR")
+    pdf.drawString(30, 550, "Reporte de Ventas")
+    pdf.drawString(30, 535, "Fecha: {}".format(datetime.now().strftime('%Y-%m-%d %H:%M:%S')))
+    pdf.drawString(30, 520, "------------------------------------------------------------------------------------------------------------------------------------------------")
+    
+    y_position = 500
+
+    # Añadir encabezados de columna
+    pdf.drawString(30, y_position, "ID")
+    pdf.drawString(100, y_position, "Fecha")
+    pdf.drawString(200, y_position, "Producto")
+    pdf.drawString(310, y_position, "Precio")
+    pdf.drawString(380, y_position, "Cantidad")
+    pdf.drawString(470, y_position, "Cliente")
+    pdf.drawString(540, y_position, "Total")
+   
+    y_position -= 20
+   
+
+    for venta in ventas:
+        if y_position < 40:
+            pdf.showPage()
+            pdf.setFont("Helvetica", 8)
+            y_position = 500
+            
+        pdf.drawString(30, y_position, str(venta['cod_ven']))
+        pdf.drawString(90, y_position, venta['fecha_ven'])
+        pdf.drawString(200, y_position, venta['nombre_pro'])
+        pdf.drawString(320, y_position, str(venta['precio']))
+        pdf.drawString(398, y_position, str(venta['cantidad']))
+        pdf.drawString(450, y_position, venta['nombre_completo_cliente'])
+        pdf.drawString(550, y_position, str(venta['precio'] * venta['cantidad']))
+        y_position -= 20
+
+    # Añadir el total en la parte inferior
+    if y_position < 60:
+        pdf.showPage()
+        pdf.setFont("Helvetica", 8)
+        y_position = 500
+    pdf.drawString(30, y_position, "------------------------------------------------------------------------------------------------------------------------------------------------")
+    y_position -= 20
+    pdf.drawString(400, y_position, "Total: ")
+    pdf.drawString(500, y_position, str(suma_total))
+
+    pdf.save()
+    buffer.seek(0)
+
+    return send_file(buffer, as_attachment=True, download_name='reporte_ventas.pdf', mimetype='application/pdf')
+
+
 # CODIGO PROVEEDORES
 @app.route("/proveedores")
 def proveedores():
@@ -802,6 +878,10 @@ def generar_reporte_compras():
     """)
     
     compras = cursor.fetchall()
+    
+    cursor.execute("SELECT SUM(compra.precio_caja * compra.cantidad_caja) AS suma_total FROM compra")
+    suma_total = cursor.fetchone()[0] or 0
+
     conn.close()
 
     buffer = io.BytesIO()
@@ -849,6 +929,17 @@ def generar_reporte_compras():
         pdf.drawString(650, y_position, compra['nombre_prov'])
         pdf.drawString(725, y_position, str(compra['precio_caja'] * compra['cantidad_caja']))
         y_position -= 20
+
+    # Añadir la suma total en la parte inferior
+    if y_position < 60:
+        pdf.showPage()
+        pdf.setFont("Helvetica", 8)
+        y_position = 500
+    
+    pdf.drawString(30, y_position, "------------------------------------------------------------")
+    y_position -= 20
+    pdf.drawString(600, y_position, "Total: ")
+    pdf.drawString(725, y_position, str(suma_total))
 
     pdf.save()
     buffer.seek(0)
